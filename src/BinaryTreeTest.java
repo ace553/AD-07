@@ -1,46 +1,69 @@
-import static org.junit.Assert.*;
+import java.util.Random;
 
 import org.junit.Test;
 
 public class BinaryTreeTest
 {
 	private BinaryTree<String> _tree;
+
 	public BinaryTreeTest()
 	{
-		_tree = new LinkedBinaryTree<String>();
+		_tree = new ArrayBinaryTree<String>();
 	}
-	
+
 	@Test
 	public void testPreoder()
 	{
-		for(int i = 20; i > 10; i--)
+		String[] shuffled = shuffledStringArray(20);
+		for (int i = 0; i < shuffled.length; i++)
 		{
-			_tree.add(""+i);
+			_tree.add(shuffled[i]);
 		}
-		
+
 		System.out.println(_tree.preorder());
 	}
-	
+
 	@Test
 	public void testPostorder()
 	{
-		for(int i = 20; i > 10; i--)
+		String[] shuffled = shuffledStringArray(20);
+		for (int i = 0; i < shuffled.length; i++)
 		{
-			_tree.add(""+i);
+			_tree.add(shuffled[i]);
 		}
-		
+
 		System.out.println(_tree.postorder());
 	}
-	
+
 	@Test
 	public void testInorder()
 	{
-		for(int i = 20; i > 10; i--)
+		String[] shuffled = shuffledStringArray(20);
+		for (int i = 0; i < shuffled.length; i++)
 		{
-			_tree.add(""+i);
+			_tree.add(shuffled[i]);
 		}
-		
+
 		System.out.println(_tree.inorder());
+	}
+
+	private String[] shuffledStringArray(int size)
+	{
+		String[] array = new String[size];
+		for (int i = 0; i < array.length; i++)
+		{
+			array[i] = "" + i;
+		}
+
+		Random r = new Random();
+		for (int i = 0; i < array.length; i++)
+		{
+			String temp = array[i];
+			int rand = r.nextInt(size);
+			array[i] = array[rand];
+			array[rand] = temp;
+		}
+		return array;
 	}
 
 }
