@@ -35,7 +35,7 @@ public class ArrayBinaryTree<T extends Comparable<T>> implements BinaryTree<T>
 		{
 			if (_array.length <= left)
 			{
-				_array = Arrays.copyOf(_array, _array.length * 2);
+				_array = Arrays.copyOf(_array, (_array.length+1) * 2);
 			}
 
 			if (_array[left] != null)
@@ -50,7 +50,7 @@ public class ArrayBinaryTree<T extends Comparable<T>> implements BinaryTree<T>
 		{
 			if (_array.length <= right)
 			{
-				_array = Arrays.copyOf(_array, _array.length * 2);
+				_array = Arrays.copyOf(_array, (_array.length+1) * 2);
 			}
 
 			if (_array[right] != null)
@@ -97,6 +97,7 @@ public class ArrayBinaryTree<T extends Comparable<T>> implements BinaryTree<T>
 		return list;
 	}
 
+	@SuppressWarnings("unchecked")
 	private void postorder(int root, List<T> list)
 	{
 		int left = getLeft(root);
